@@ -1,6 +1,7 @@
 // src/components/Navbar.js
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Phone, Truck } from 'lucide-react';
+import { Menu, X, Sun, Moon, Phone } from 'lucide-react';
+import { Link } from 'react-scroll';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar() {
@@ -17,11 +18,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Equipment', href: '#equipment' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: 'home' },
+    { name: 'Services', to: 'services' },
+    { name: 'Equipment', to: 'equipment' },
+    { name: 'Projects', to: 'projects' },
+    { name: 'Contact', to: 'contact' },
   ];
 
   return (
@@ -39,24 +40,34 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 group">
+            <Link
+              to="home"
+              smooth={true}
+              duration={800}
+              offset={-80}
+              className="flex items-center gap-3 group cursor-pointer"
+            >
               <div className="relative">
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/30 transition-all"></div>
-    
               </div>
               <div className={`transition-colors ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
                 <div className="font-bold text-xl tracking-tight leading-tight">BHAGYASHREE</div>
                 <div className="text-xs tracking-widest font-light text-primary">EARTHMOVERS</div>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  className={`relative font-medium text-sm transition-colors group ${
+                  to={link.to}
+                  smooth={true}
+                  duration={800}
+                  offset={-80}
+                  spy={true}
+                  activeClass="text-primary"
+                  className={`relative font-medium text-sm transition-colors group cursor-pointer ${
                     theme === 'dark' 
                       ? 'text-gray-300 hover:text-white' 
                       : 'text-gray-700 hover:text-black'
@@ -64,7 +75,7 @@ export default function Navbar() {
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -137,18 +148,22 @@ export default function Navbar() {
           }`}>
             <div className="p-6 space-y-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.to}
+                  smooth={true}
+                  duration={800}
+                  offset={-80}
+                  spy={true}
                   onClick={() => setIsOpen(false)}
-                  className={`block font-medium py-3 px-4 rounded-xl transition-all ${
+                  className={`block font-medium py-3 px-4 rounded-xl transition-all cursor-pointer ${
                     theme === 'dark' 
                       ? 'text-white hover:bg-white/5 hover:text-primary' 
                       : 'text-black hover:bg-gray-100 hover:text-primary'
                   }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               
               <div className="pt-4 border-t border-gray-700/50 space-y-3">

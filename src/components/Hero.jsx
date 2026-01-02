@@ -2,6 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { Link } from 'react-scroll';
+
+// Contact Information
+const CONTACT_INFO = {
+  phone: '+91 98765 43210',
+  phoneDisplay: '+91 98765 43210',
+  whatsapp: '919876543210'
+};
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -42,20 +50,20 @@ export default function Hero() {
       </div>
 
       {/* Orange glow */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-primary"></div>
+      <div className="absolute top-1/4 right-0 w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-20 bg-primary"></div>
 
-      <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           
           {/* Left Content */}
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-6 sm:space-y-8 animate-fade-in">
             <div>
-              <div className={`inline-block px-4 py-2 rounded-full border mb-4 ${
+              <div className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border mb-4 ${
                 theme === 'dark' ? 'border-primary/50' : 'border-primary'
               }`}>
-                <span className="text-primary text-sm font-semibold tracking-wide">PROFESSIONAL EARTHMOVING SERVICES</span>
+                <span className="text-primary text-xs sm:text-sm font-semibold tracking-wide">PROFESSIONAL EARTHMOVING SERVICES</span>
               </div>
-              <h1 className={`text-5xl lg:text-6xl font-bold leading-tight transition-colors ${
+              <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors ${
                 theme === 'dark' ? 'text-white' : 'text-black'
               }`}>
                 Bhagyashree
@@ -65,57 +73,64 @@ export default function Hero() {
               </h1>
             </div>
 
-            <p className={`text-lg leading-relaxed transition-colors ${
+            <p className={`text-base sm:text-lg leading-relaxed transition-colors ${
               theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Your trusted partner for heavy machinery services. We provide JCB and earthmoving equipment with experienced operators for construction, excavation, and infrastructure projects.
             </p>
 
             {/* Services List */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {['Excavation Work', 'Land Leveling', 'Site Preparation', 'Material Loading'].map((service) => (
                 <div key={service} className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
-                  <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{service}</span>
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+                  <span className={`text-sm sm:text-base ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{service}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
-              <button 
-                className="group px-6 py-3 rounded-lg font-semibold text-white bg-primary hover:shadow-glow-orange flex items-center gap-3 transition-all"
+              <a 
+                href={`tel:${CONTACT_INFO.phone}`}
+                className="group px-6 py-3 rounded-lg font-semibold text-white bg-primary hover:shadow-glow-orange flex items-center gap-3 transition-all cursor-pointer"
               >
                 <Phone className="w-5 h-5" />
                 Get Quote
-              </button>
+              </a>
               
-              <button className={`px-6 py-3 rounded-lg font-semibold border-2 transition-all flex items-center gap-2 ${
-                theme === 'dark' 
-                  ? 'text-white border-gray-700 hover:border-primary' 
-                  : 'text-black border-gray-300 hover:border-primary'
-              }`}>
+              <Link
+                to="services"
+                smooth={true}
+                duration={800}
+                offset={-80}
+                className={`px-6 py-3 rounded-lg font-semibold border-2 transition-all flex items-center gap-2 cursor-pointer ${
+                  theme === 'dark' 
+                    ? 'text-white border-gray-700 hover:border-primary' 
+                    : 'text-black border-gray-300 hover:border-primary'
+                }`}
+              >
                 View Services
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </Link>
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8 pt-4">
+            <div className="flex flex-wrap gap-6 sm:gap-8 pt-4">
               <div>
-                <div className="text-3xl font-bold text-primary">15+</div>
-                <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Years Experience</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary">15+</div>
+                <div className={`text-xs sm:text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Years Experience</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary">500+</div>
-                <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Projects Completed</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary">500+</div>
+                <div className={`text-xs sm:text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Projects Completed</div>
               </div>
             </div>
           </div>
 
           {/* Right - Image Slideshow */}
-          <div className="relative h-[500px] flex items-center justify-center animate-fade-in">
-            <div className={`relative w-full h-full rounded-2xl overflow-hidden border-4 shadow-2xl ${
+          <div className="relative h-[400px] sm:h-[500px] lg:h-[500px] flex items-center justify-center animate-fade-in">
+            <div className={`relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden border-2 sm:border-4 shadow-2xl ${
               theme === 'dark' ? 'border-primary/30' : 'border-primary/50'
             }`}>
               {images.map((img, index) => (
@@ -136,28 +151,28 @@ export default function Hero() {
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className={`absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full backdrop-blur-sm border flex items-center justify-center transition-all z-10 ${
+                className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm border flex items-center justify-center transition-all z-10 ${
                   theme === 'dark'
                     ? 'bg-black/50 border-primary/50 text-white hover:bg-primary'
                     : 'bg-white/50 border-primary text-black hover:bg-primary hover:text-white'
                 }`}
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
               
               <button
                 onClick={nextSlide}
-                className={`absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full backdrop-blur-sm border flex items-center justify-center transition-all z-10 ${
+                className={`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-sm border flex items-center justify-center transition-all z-10 ${
                   theme === 'dark'
                     ? 'bg-black/50 border-primary/50 text-white hover:bg-primary'
                     : 'bg-white/50 border-primary text-black hover:bg-primary hover:text-white'
                 }`}
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               {/* Dots Indicator */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {images.map((_, index) => (
                   <button
                     key={index}
@@ -173,7 +188,7 @@ export default function Hero() {
               </div>
 
               {/* Image Counter */}
-              <div className={`absolute top-6 right-6 px-3 py-1 rounded-full backdrop-blur-sm border font-semibold text-sm z-10 ${
+              <div className={`absolute top-4 sm:top-6 right-4 sm:right-6 px-2.5 sm:px-3 py-1 rounded-full backdrop-blur-sm border font-semibold text-xs sm:text-sm z-10 ${
                 theme === 'dark'
                   ? 'bg-black/50 border-primary/50 text-white'
                   : 'bg-white/50 border-primary text-black'

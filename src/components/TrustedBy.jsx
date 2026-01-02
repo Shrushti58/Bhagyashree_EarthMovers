@@ -1,301 +1,228 @@
-import React, { useState } from 'react';
-import { Building2, Handshake, Award, Users, ExternalLink, CheckCircle2, Clock, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { Building2, Factory, Home, MapPin, ArrowRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
-export default function ClientsPartnersSection() {
-  const [hoveredClient, setHoveredClient] = useState(null);
+export default function TrustedBy() {
   const { theme } = useTheme();
 
-  const clients = [
+  const projects = [
     {
       id: 1,
-      name: 'NAAM Foundation',
-      website: 'https://naammh.org/',
-      logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=200&fit=crop',
-      partnership: '4+ Years',
-      projects: '25+ Projects',
-      description: 'Long-standing partnership supporting community infrastructure and land development initiatives',
-      services: ['Heavy Machinery Supply', 'Land Development', 'Infrastructure Support', 'Community Projects'],
-      featured: true
+      name: 'MIDC Industrial Zone',
+      location: 'Nagpur, Maharashtra',
+      type: 'Industrial',
+      icon: Factory,
+      description: 'Complete site excavation and leveling for industrial complex',
+      year: '2024',
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800'
     },
     {
       id: 2,
-      name: 'Municipal Corporation',
-      website: '#',
-      logo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop',
-      partnership: '3+ Years',
-      projects: '40+ Projects',
-      description: 'Providing reliable equipment for municipal infrastructure and public works development',
-      services: ['Road Construction', 'Drainage Systems', 'Public Infrastructure', 'Urban Development'],
-      featured: false
+      name: 'Highway Expansion Project',
+      location: 'Wardha Road, Nagpur',
+      type: 'Infrastructure',
+      icon: MapPin,
+      description: 'Earthmoving and grading for 15km highway expansion',
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1585159812596-fac104f2e069?w=800'
     },
     {
       id: 3,
-      name: 'Real Estate Developers',
-      website: '#',
-      logo: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&h=200&fit=crop',
-      partnership: '5+ Years',
-      projects: '60+ Projects',
-      description: 'Trusted machinery partner for residential and commercial construction projects',
-      services: ['Site Excavation', 'Foundation Work', 'Demolition Services', 'Grading & Leveling'],
-      featured: false
+      name: 'Residential Township',
+      location: 'Hingna, Nagpur',
+      type: 'Residential',
+      icon: Home,
+      description: 'Land preparation for 200+ residential units development',
+      year: '2024',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800'
+    },
+    {
+      id: 4,
+      name: 'Commercial Complex',
+      location: 'Dharampeth, Nagpur',
+      type: 'Commercial',
+      icon: Building2,
+      description: 'Foundation excavation and material loading services',
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800'
+    },
+    {
+      id: 5,
+      name: 'MIHAN Development',
+      location: 'MIHAN, Nagpur',
+      type: 'Industrial',
+      icon: Factory,
+      description: 'Large-scale earthmoving for logistics park development',
+      year: '2024',
+      image: 'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800'
+    },
+    {
+      id: 6,
+      name: 'Airport Road Project',
+      location: 'Sonegaon, Nagpur',
+      type: 'Infrastructure',
+      icon: MapPin,
+      description: 'Road widening and site preparation work',
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1572105192033-8313d8c4f814?w=800'
     }
   ];
 
   const stats = [
-    { icon: Users, value: '50+', label: 'Active Clients' },
-    { icon: Handshake, value: '200+', label: 'Projects Completed' },
-    { icon: Clock, value: '10+', label: 'Years Experience' },
-    { icon: Award, value: '100%', label: 'Client Satisfaction' }
+    { number: '500+', label: 'Projects Completed' },
+    { number: '50+', label: 'Happy Clients' },
+    { number: '15+', label: 'Years Experience' },
+    { number: '100%', label: 'Client Satisfaction' }
   ];
 
   return (
-    <div className={`relative py-20 overflow-hidden transition-colors duration-300 ${
-      theme === 'dark' ? 'bg-black' : 'bg-white'
+    <div className={`relative py-16 lg:py-24 transition-colors duration-300 font-sans ${
+      theme === 'dark' ? 'bg-black' : 'bg-gray-50'
     }`}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(${theme === 'dark' ? '#fff' : '#000'} 1px, transparent 1px), linear-gradient(90deg, ${theme === 'dark' ? '#fff' : '#000'} 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
+          backgroundImage: `linear-gradient(#CC6500 1px, transparent 1px), linear-gradient(90deg, #CC6500 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
         }}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="h-px w-8 bg-primary"></div>
-            <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase">Partnership</span>
-            <div className="h-px w-8 bg-primary"></div>
+      {/* Orange glow */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-primary"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12 lg:mb-16">
+          <div className={`inline-block px-4 py-2 rounded-full border mb-4 ${
+            theme === 'dark' ? 'border-primary/50' : 'border-primary'
+          }`}>
+            <span className="text-primary text-sm font-semibold tracking-wide">OUR PORTFOLIO</span>
           </div>
           
-          <h2 className={`text-5xl lg:text-6xl font-bold mb-6 ${
+          <h2 className={`text-4xl lg:text-5xl font-bold mb-4 transition-colors ${
             theme === 'dark' ? 'text-white' : 'text-black'
           }`}>
-            Clients & Partners
+            Trusted By Leading
+            <span className="block text-primary">Developers & Contractors</span>
           </h2>
           
-          <p className={`text-xl leading-relaxed ${
-            theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
+          <p className={`text-lg max-w-2xl mx-auto transition-colors ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
           }`}>
-            Building lasting relationships through reliability, quality, and professional excellence. Our partnerships are built on trust, proven performance, and a shared commitment to successful project delivery.
+            We've successfully completed projects across Nagpur and Maharashtra, delivering excellence in every earthmoving operation.
           </p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <div 
+              key={index}
+              className={`p-6 rounded-2xl border-2 text-center transition-all hover:scale-105 ${
+                theme === 'dark' 
+                  ? 'bg-gray-900/50 border-gray-800 hover:border-primary/50' 
+                  : 'bg-white border-gray-200 hover:border-primary/50'
+              }`}
+            >
+              <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{stat.number}</div>
+              <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {projects.map((project) => {
+            const Icon = project.icon;
             return (
-              <div
-                key={idx}
-                className={`text-center p-8 transition-all duration-300 ${
+              <div 
+                key={project.id}
+                className={`group rounded-2xl overflow-hidden border-2 transition-all hover:shadow-2xl ${
                   theme === 'dark' 
-                    ? 'bg-zinc-900 hover:bg-zinc-800' 
-                    : 'bg-gray-50 hover:bg-gray-100'
+                    ? 'bg-gray-900/50 border-gray-800 hover:border-primary/50' 
+                    : 'bg-white border-gray-200 hover:border-primary/50'
                 }`}
               >
-                <Icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                <div className={`text-4xl font-bold mb-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-black'
-                }`}>
-                  {stat.value}
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  
+                  {/* Year Badge */}
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">
+                    {project.year}
+                  </div>
+
+                  {/* Icon */}
+                  <div className={`absolute bottom-4 left-4 w-12 h-12 rounded-full flex items-center justify-center border-2 backdrop-blur-sm ${
+                    theme === 'dark'
+                      ? 'bg-black/50 border-primary/50'
+                      : 'bg-white/50 border-primary'
+                  }`}>
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
                 </div>
-                <div className={`text-sm font-semibold ${
-                  theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
-                }`}>
-                  {stat.label}
+
+                {/* Project Details */}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className={`text-xl font-bold mb-1 transition-colors ${
+                        theme === 'dark' ? 'text-white' : 'text-black'
+                      }`}>
+                        {project.name}
+                      </h3>
+                      <div className={`flex items-center gap-2 text-sm ${
+                        theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
+                        <MapPin className="w-4 h-4" />
+                        {project.location}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 ${
+                    theme === 'dark'
+                      ? 'bg-primary/20 text-primary'
+                      : 'bg-primary/10 text-primary'
+                  }`}>
+                    {project.type}
+                  </div>
+
+                  <p className={`text-sm mb-4 line-clamp-2 ${
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  }`}>
+                    {project.description}
+                  </p>
+
+                  <button className={`flex items-center gap-2 text-sm font-semibold group/btn transition-colors ${
+                    theme === 'dark'
+                      ? 'text-primary hover:text-primary/80'
+                      : 'text-primary hover:text-primary/80'
+                  }`}>
+                    View Details
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Trusted By Section */}
-        <div className="mb-16">
-          <div className={`inline-flex items-center gap-3 px-6 py-3 mb-10 ${
-            theme === 'dark' ? 'bg-zinc-900' : 'bg-gray-50'
-          }`}>
-            <Award className="w-5 h-5 text-primary" />
-            <h3 className={`text-2xl font-bold ${
-              theme === 'dark' ? 'text-white' : 'text-black'
-            }`}>
-              Trusted By
-            </h3>
-          </div>
-
-          <div className="space-y-8">
-            {clients.map((client) => {
-              const isHovered = hoveredClient === client.id;
-              
-              return (
-                <div
-                  key={client.id}
-                  onMouseEnter={() => setHoveredClient(client.id)}
-                  onMouseLeave={() => setHoveredClient(null)}
-                  className={`relative transition-all duration-500 ${
-                    theme === 'dark' ? 'bg-zinc-900' : 'bg-gray-50'
-                  } ${isHovered ? 'shadow-2xl' : 'shadow-lg'} ${
-                    client.featured ? 'border-l-4 border-primary' : ''
-                  }`}
-                >
-                  <div className="p-8 lg:p-10">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                      {/* Logo Section */}
-                      <div className="flex-shrink-0">
-                        <div className={`w-32 h-32 overflow-hidden transition-all duration-500 ${
-                          isHovered ? 'scale-105' : 'scale-100'
-                        }`}>
-                          <img
-                            src={client.logo}
-                            alt={client.name}
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Content Section */}
-                      <div className="flex-1 space-y-6">
-                        {/* Header */}
-                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                          <div>
-                            <div className="flex items-center gap-3 mb-3">
-                              <h4 className={`text-3xl font-bold ${
-                                theme === 'dark' ? 'text-white' : 'text-black'
-                              }`}>
-                                {client.name}
-                              </h4>
-                              {client.website !== '#' && (
-                                <a
-                                  href={client.website}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className={`p-2 transition-all duration-300 hover:scale-110 ${
-                                    theme === 'dark' ? 'hover:bg-zinc-800' : 'hover:bg-gray-100'
-                                  }`}
-                                >
-                                  <ExternalLink className="w-5 h-5 text-primary" />
-                                </a>
-                              )}
-                            </div>
-                            <p className={`text-lg leading-relaxed ${
-                              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                            }`}>
-                              {client.description}
-                            </p>
-                          </div>
-
-                          {/* Partnership Stats */}
-                          <div className="flex gap-6 lg:flex-col lg:items-end">
-                            <div className={`text-center lg:text-right px-6 py-3 ${
-                              theme === 'dark' ? 'bg-zinc-800' : 'bg-white'
-                            }`}>
-                              <div className="text-2xl font-bold text-primary mb-1">
-                                {client.partnership}
-                              </div>
-                              <div className={`text-xs font-semibold ${
-                                theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
-                              }`}>
-                                Partnership
-                              </div>
-                            </div>
-                            <div className={`text-center lg:text-right px-6 py-3 ${
-                              theme === 'dark' ? 'bg-zinc-800' : 'bg-white'
-                            }`}>
-                              <div className="text-2xl font-bold text-primary mb-1">
-                                {client.projects}
-                              </div>
-                              <div className={`text-xs font-semibold ${
-                                theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
-                              }`}>
-                                Completed
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Services Provided */}
-                        <div>
-                          <div className={`text-xs font-bold tracking-wider uppercase mb-3 ${
-                            theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
-                          }`}>
-                            Services Provided
-                          </div>
-                          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                            {client.services.map((service, idx) => (
-                              <div
-                                key={idx}
-                                className={`flex items-center gap-2 px-4 py-3 transition-all duration-300 ${
-                                  theme === 'dark' 
-                                    ? 'bg-zinc-800' 
-                                    : 'bg-white border border-gray-200'
-                                }`}
-                              >
-                                <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                                <span className={`text-sm font-semibold ${
-                                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                                }`}>
-                                  {service}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Featured Badge */}
-                        {client.featured && (
-                          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border-l-2 border-primary">
-                            <TrendingUp className="w-4 h-4 text-primary" />
-                            <span className="text-sm font-bold text-primary">
-                              Long-Term Strategic Partner
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Hover Effect Border */}
-                  <div className={`absolute inset-0 border-2 pointer-events-none transition-all duration-500 ${
-                    isHovered ? 'border-primary/30' : 'border-transparent'
-                  }`}></div>
-                </div>
-              );
-            })}
-          </div>
+        {/* Bottom CTA */}
+        <div className="text-center mt-12 lg:mt-16">
+          <button className="group px-8 py-4 rounded-lg font-semibold text-white bg-primary hover:shadow-glow-orange flex items-center gap-3 mx-auto transition-all">
+            View All Projects
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
 
-        {/* Why Partner With Us */}
-        <div className={`mt-24 p-12 ${
-          theme === 'dark' ? 'bg-zinc-900' : 'bg-gray-50'
-        }`}>
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <Building2 className="w-12 h-12 text-primary mx-auto" />
-            <h3 className={`text-3xl font-bold ${
-              theme === 'dark' ? 'text-white' : 'text-black'
-            }`}>
-              Why Organizations Choose Us
-            </h3>
-            <p className={`text-lg leading-relaxed ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              Our commitment to operational excellence, safety standards, and timely project delivery has made us the preferred machinery partner for government agencies, NGOs, and private developers. We understand that your project's success depends on reliable equipment and professional service—that's exactly what we deliver, every time.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <button className="px-8 py-4 bg-primary text-white font-bold hover:bg-primary/90 transition-all">
-                Become a Partner
-              </button>
-              <button className={`px-8 py-4 font-bold transition-all border-2 ${
-                theme === 'dark'
-                  ? 'border-zinc-700 text-white hover:bg-zinc-800'
-                  : 'border-gray-300 text-black hover:bg-gray-100'
-              }`}>
-                View Case Studies
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
